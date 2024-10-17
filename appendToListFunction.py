@@ -4,7 +4,7 @@ def append_to_list(existing_list, value_being_added):
     Args:
         existing_list (list): list to which values will be added
         value_being_added (int, float, str, tuple, list, bool): value
-            or values to be added to the list
+            or values to be added to the list.
 
     Returns:
         list: Updated list

@@ -68,7 +68,7 @@ person3 = GreenCardRegistration(
 print(person3.register_person())
 
 person4 = GreenCardRegistration(
-    person_name='_%', person_age=35, country='Poland')
+    person_name='_%', person_age=35, country='')
 # Registration failed for Viktoria. Eligibility criteria not met: Age must be between 18 and 70, and the country of registration must be one of the following: Ukraine, Poland, Germany, USA.
 print(person3.register_person())
 
