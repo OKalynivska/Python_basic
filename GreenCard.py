@@ -1,5 +1,5 @@
 class GreenCardRegistration:
-    allowed_countries = ["Ukraine", "Poland", "Germany", "USA"]
+    ALLOWED_COUNTRIES = ["Ukraine", "Poland", "Germany", "USA"]
     MIN_PERSON_AGE = 18
     MAX_PERSON_AGE = 70
 
