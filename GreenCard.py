@@ -1,12 +1,36 @@
 class GreenCardRegistration:
     allowed_countries = ["Ukraine", "Poland", "Germany", "USA"]
-    min_person_age = 18
-    max_person_age = 70
+    MIN_PERSON_AGE = 18
+    MAX_PERSON_AGE = 70
 
     def __init__(self, person_name, person_age, country):
-        self.person_name = person_name
-        self.person_age = person_age
-        self.country = country
+        self.__person_name = person_name
+        self.__person_age = person_age
+        self.__country = country
+
+    @property
+    def person_name(self):
+        return self.__person_name
+
+    @person_name.setter
+    def person_name(self, name):
+        self.__person_name = name
+
+    @property
+    def person_age(self):
+        return self.__person_age
+
+    @person_age.setter
+    def person_age(self, age):
+        self.__person_age = age
+
+    @property
+    def country(self):
+        return self.__country
+
+    @country.setter
+    def country(self, country):
+        self.__country = country
 
     @staticmethod
     def is_name_valid(person_name):
@@ -31,7 +55,7 @@ class GreenCardRegistration:
         Returns:
             bool: Check if range of age and country are allowed for registration
         """
-        return (cls.min_person_age <= person_age <= cls.max_person_age) and (country in cls.allowed_countries)
+        return (cls.MIN_PERSON_AGE <= person_age <= cls.MAX_PERSON_AGE) and (country in cls.allowed_countries)
 
     def register_person(self):
         """ Register the person for the Green Card
@@ -47,7 +71,7 @@ class GreenCardRegistration:
         if not GreenCardRegistration.is_eligible_for_registration(self.person_age, self.country):
             return (f"Registration failed for {self.person_name}. "
                     f"Eligibility criteria not met: Age must be between {
-                        self.min_person_age} and {self.max_person_age}, "
+                        self.MIN_PERSON_AGE} and {self.MAX_PERSON_AGE}, "
                     f"and the country of registration must be one of the following: {', '.join(GreenCardRegistration.allowed_countries)}.")
         return f"Registration successful for {self.person_name}. Welcome to {self.country}!"
 
