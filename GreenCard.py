@@ -31,7 +31,7 @@ class GreenCardRegistration:
         Returns:
             bool: Check if range of age and country are allowed for registration
         """
-        return cls.min_person_age <= person_age <= cls.max_person_age and country in cls.allowed_countries
+        return (cls.min_person_age <= person_age <= cls.max_person_age) and (country in cls.allowed_countries)
 
     def register_person(self):
         """ Register the person for the Green Card
