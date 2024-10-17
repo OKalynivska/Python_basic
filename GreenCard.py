@@ -55,7 +55,7 @@ class GreenCardRegistration:
         Returns:
             bool: Check if range of age and country are allowed for registration
         """
-        return (cls.MIN_PERSON_AGE <= person_age <= cls.MAX_PERSON_AGE) and (country in cls.allowed_countries)
+        return (cls.MIN_PERSON_AGE <= person_age <= cls.MAX_PERSON_AGE) and (country in cls.ALLOWED_COUNTRIES)
 
     def register_person(self):
         """ Register the person for the Green Card
@@ -72,7 +72,7 @@ class GreenCardRegistration:
             return (f"Registration failed for {self.person_name}. "
                     f"Eligibility criteria not met: Age must be between {
                         self.MIN_PERSON_AGE} and {self.MAX_PERSON_AGE}, "
-                    f"and the country of registration must be one of the following: {', '.join(GreenCardRegistration.allowed_countries)}.")
+                    f"and the country of registration must be one of the following: {', '.join(GreenCardRegistration.ALLOWED_COUNTRIES)}.")
         return f"Registration successful for {self.person_name}. Welcome to {self.country}!"
 
 
