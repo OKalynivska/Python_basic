@@ -1,4 +1,4 @@
-def appendToList(existing_list, value_being_added):
+def append_to_list(existing_list, value_being_added):
     """ Append values to existing list
 
     Args:
@@ -24,13 +24,13 @@ bool_single_value = True
 str_single_value = 'test_value'
 tuple_values = (1, 4, 8, 0)
 
-print(f"int {int_single_value} added:", appendToList(
-    list_of_numbers, int_single_value))
+print(f"int {int_single_value} added:",
+      append_to_list(list_of_numbers, int_single_value))
 print(f"tuple {tuple_values} added:",
-      appendToList(list_of_numbers, tuple_values))
-print(f"str {str_single_value} added:", appendToList(
-    list_of_numbers, str_single_value))
+      append_to_list(list_of_numbers, tuple_values))
+print(f"str {str_single_value} added:",
+      append_to_list(list_of_numbers, str_single_value))
 print(f"list {second_list_of_numbers} added:",
-      appendToList(list_of_numbers, second_list_of_numbers))
+      append_to_list(list_of_numbers, second_list_of_numbers))
 print(f"bool {bool_single_value} added:",
-      appendToList(list_of_numbers, bool_single_value))
+      append_to_list(list_of_numbers, bool_single_value))
