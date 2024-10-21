@@ -21,7 +21,7 @@ class ModificationJsonFile:
         Raises:
             FileNotFoundError: Rasie if file not found
             ValueError: Raise if file extention is not valid
-            ValueError: Raise if file is empty
+            JSONDecodeError: Raise if file is empty or contains not valid information
 
         Returns:
             dict: Loaded JSON file
