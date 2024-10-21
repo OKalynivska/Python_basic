@@ -16,7 +16,7 @@ class ModificationJsonFile:
         """Method loads the file and check if file is not empty and contains valid information
 
         Args:
-            file_path (Path): File pat
+            file_path (str): File path
 
         Raises:
             FileNotFoundError: Rasie if file not found
