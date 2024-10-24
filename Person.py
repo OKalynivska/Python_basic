@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from datetime import datetime
+from functools import wraps
 
 
 class Person:
@@ -43,23 +44,29 @@ class Person:
     def to_object(cls, data):
         return cls(**data)
 
+    def write_to_file(func):
+        @wraps(func)
+        def wrapper(cls, *args, **kwargs):
+            func(cls, *args, **kwargs)
+            cls.list_to_json_file(*args, **kwargs)
+        return wrapper
+
     @classmethod
+    @write_to_file
     def remove_id(cls, objects, output_file_path):
         for ob in objects:
-            print(type(ob))  # <class '__main__.Person'>
+            # print(type(ob))  # <class '__main__.Person'>
             if 'id' in ob.__dict__:
                 ob.__dict__.pop('id')
 
-        cls.list_to_json_file(objects, output_file_path)
-
     @classmethod
+    @write_to_file
     def reformat_date(cls, objects, output_file_path):
         for ob in objects:
             if 'birth_date' in ob.__dict__:
-                new_format = datetime.strptime(ob.__dict__.get('birth_date'), "%m/%d/%Y").strftime("%Y-%m-%d")
+                new_format = datetime.strptime(ob.__dict__.get(
+                    'birth_date'), "%m/%d/%Y").strftime("%Y-%m-%d")
                 ob.__dict__['birth_date'] = new_format
-
-        cls.list_to_json_file(objects, output_file_path)
 
 
 file_path = Path('templates/valid_info.json')
@@ -67,10 +74,10 @@ invalid_data = Path('templates/invalid_data.json')
 empty_data = Path('templates/empty.json')
 another_format = Path('templates/file.txt')
 
-Person.load_from_json_file_to_list(invalid_data)
-Person.load_from_json_file_to_list(empty_data)
-Person.load_from_json_file_to_list(another_format)
+# Person.load_from_json_file_to_list(invalid_data)
+# Person.load_from_json_file_to_list(empty_data)
+# Person.load_from_json_file_to_list(another_format)
 valid_file = Person.load_from_json_file_to_list(file_path)
-print([str(f) for f in Person.load_from_json_file_to_list(file_path)]) #list type
+# print([str(f) for f in Person.load_from_json_file_to_list(file_path)])  # list type
 Person.reformat_date(valid_file, 'templates/reformated_date.json')
 Person.remove_id(valid_file, 'templates/without_id.json')
