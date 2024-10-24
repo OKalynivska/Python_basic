@@ -58,6 +58,7 @@ class Person:
             # print(type(ob))  # <class '__main__.Person'>
             if 'id' in ob.__dict__:
                 ob.__dict__.pop('id')
+        return objects
 
     @classmethod
     @write_to_file
@@ -67,6 +68,7 @@ class Person:
                 new_format = datetime.strptime(ob.__dict__.get(
                     'birth_date'), "%m/%d/%Y").strftime("%Y-%m-%d")
                 ob.__dict__['birth_date'] = new_format
+        return objects
 
 
 file_path = Path('templates/valid_info.json')
